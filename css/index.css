@@ -5,10 +5,10 @@
 #main {
     width: 408px;
     height: 408px;
-    background: white;
+    background: #eee;
     border: 2px solid gray;
     margin: 0 auto;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 h2 {
@@ -21,7 +21,6 @@ h2 {
     position: relative;
     top: -408px;
     /*隐藏所有格子*/
-    border-collapse: collapse;
 }
 
 
