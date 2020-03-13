@@ -1,5 +1,25 @@
 * {
     box-sizing: border-box;
+    margin: 0 0;
+}
+
+#title {
+    position: relative;
+    margin: 0 auto;
+}
+
+#score-1 {
+    display: inline-block;
+    padding: 10px 20px;
+}
+
+#score-2 {
+    display: inline-block;
+    padding: 10px 20px;
+}
+
+#top {
+    text-align: center;
 }
 
 #main {

@@ -8,26 +8,28 @@
 </head>
 
 <body>
-    <div style="margin: 0 auto;width: 28%;">
-        <div style="display: inline-block;">
-            <h2>score</h2>
-            <h2 id="score">0</h2>
+    <div id="title">
+        <div id="top">
+            <div id="score-1">
+                <h2>score</h2>
+                <h2 id="score">0</h2>
+            </div>
+            <div id="score-2">
+                <h2>Record</h2>
+                <h2 id="highscore">0</h2>
+            </div>
         </div>
-        <div style="display: inline-block;padding-left: 50px;">
-            <h2>Record</h2>
-            <h2 id="highscore">0</h2>
+
+        <div id="main">
+            <div id="con"></div>
         </div>
-    </div>
-    <div id="main">
-        <div id="con"></div>
-    </div>
-    <div class="btn">
-        <button class="start" onclick="start()">
-            开始游戏吧
-        </button>
+        <div class="btn">
+            <button class="start" onclick="start()">
+                开始游戏吧
+            </button>
+        </div>
     </div>
 </body>
-<script src="js/index.js">
-</script>
+<script src="js/index.js"></script>
 
 </html>
