@@ -76,7 +76,6 @@ function init() {
 
 // 判断是否点击黑块、白块
 function judge(ev) {
-    console.log(ev.target.className);
     if (ev.target.className.indexOf('black') == -1 && ev.target.className.indexOf('cell') !== -1) {
         ev.target.parentNode.pass_white = 1; //定义属性pass_white，表示此行row的白块已经被点击
     }
@@ -148,10 +147,18 @@ function delrow() {
 function speedup() {
     speed += 2;
     if (speed == 20) {
-        alert('你超神了');
+        win();
     }
 }
 
+//浮现一只比V黄熊，然后隐去
+function win() {
+    var img = document.getElementById('img0');
+    img.style.opacity = 0.7;
+    setTimeout(() => {
+        img.style.opacity = 0;
+    }, 2000);
+}
 
 
 // 记分
