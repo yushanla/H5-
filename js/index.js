@@ -20,7 +20,6 @@ function createrow() {
     var con = $('con');
     var row = creatediv('row'); //创建div className=row
     var arr = creatcell(); //定义div cell的类名,其中一个为cell black
-
     con.appendChild(row); // 添加row为con的子节点
 
     for (var i = 0; i < 4; i++) {
@@ -78,6 +77,7 @@ function init() {
 function judge(ev) {
     if (ev.target.className.indexOf('black') == -1 && ev.target.className.indexOf('cell') !== -1) {
         ev.target.parentNode.pass_white = 1; //定义属性pass_white，表示此行row的白块已经被点击
+        over();
     }
 
     if (ev.target.className.indexOf('black') !== -1) { //点击目标元素 类名中包含 black 说明是黑块
@@ -108,6 +108,7 @@ function over() {
 function fail() {
     clearInterval(clock);
     flag = false;
+    speed = 6;
     var score = $('score').innerHTML;
     confirm('你的最终得分为 ' + parseInt(score));
     saveScore(score);

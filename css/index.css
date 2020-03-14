@@ -94,3 +94,9 @@ img {
     position: absolute;
     margin: 0 0;
 }
+
+@media only screen and (max-width:620px) {
+    #main {
+        width: 90%;
+    }
+}
