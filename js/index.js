@@ -176,7 +176,6 @@ function saveScore(score) {
     if (sessionStorage.high == undefined) {
         sessionStorage.high = score;
         $('highscore').innerHTML = score;
-
     } else {
         var highscore = sessionStorage.high;
         if (highscore < score) {

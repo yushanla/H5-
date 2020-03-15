@@ -1,0 +1,58 @@
+* {
+    margin: 0 0;
+    box-sizing: border-box;
+}
+
+#num {
+    margin: 0 auto;
+    width: 40%;
+}
+
+table tr td {
+    text-align: center;
+    padding: 7px 25px;
+    font-weight: bold;
+}
+
+#main {
+    margin: 0 auto;
+    border: 2px solid gray;
+    width: 408px;
+    height: 408px;
+    background: #eeecec;
+    opacity: 0.6;
+}
+
+#con {
+    width: 408px;
+    height: 408px;
+    position: relative;
+    top: -408px;
+}
+
+.row {
+    width: 407px;
+    height: 102px;
+}
+
+.cell {
+    width: 101px;
+    height: 102px;
+    border: 1px solid black;
+    float: left;
+    background-color: white;
+}
+
+.black {
+    background-color: black;
+}
+
+#control {
+    background: rgb(22, 236, 147);
+    border-radius: 5px;
+    width: 160px;
+    height: 40px;
+    margin: 20px auto;
+    padding: 10px 80px 10px 65px;
+    box-shadow: 3px 3px 2px #0bbb8f;
+}
