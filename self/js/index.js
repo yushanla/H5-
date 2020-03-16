@@ -101,7 +101,7 @@ function win() {
 //最高成绩记录
 function highscore(scorenum) {
     var num = parseInt(sessionStorage.high);
-    if (num !== undefined) {
+    if (!isNaN(num)) {
         if (num < scorenum) {
             num = scorenum;
         }
