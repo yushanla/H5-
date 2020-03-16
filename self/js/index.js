@@ -6,7 +6,6 @@ function $(ele) {
 var clock = null;
 var flag = false;
 var speed = 6;
-var scorenum = 0;
 
 //
 function start() {
@@ -86,23 +85,32 @@ function jduge(ev) {
 }
 //成绩记录
 function score() {
+    var scorenum = parseInt($('score').innerHTML);
     scorenum += 1;
     $('score').innerHTML = scorenum;
-    if (scorenum % speed == 10) {
+    if (scorenum % 10 == 0) {
         speed += 2;
+        win();
     }
 }
+//奖励图像
+function win() {
+    $('img0').style.opacity = 1;
+    setInterval("$('img0').style.opacity = 0", 2500);
+}
 //最高成绩记录
-function highscore() {
-    if (sessionStorage.high != undefined) {
-        if (sessionStorage.high > scorenum) {
-            sessionStorage.high = scorenum;
+function highscore(scorenum) {
+    var num = parseInt(sessionStorage.high);
+    if (num !== undefined) {
+        if (num < scorenum) {
+            num = scorenum;
         }
     } else {
-        sessionStorage.high = 0;
-        sessionStorage.high = scorenum;
+        num = 0;
+        num = scorenum;
     }
-    $('highscore').innerHTML = sessionStorage.high;
+    sessionStorage.high = num;
+    $('highscore').innerHTML = num;
 }
 //移动
 function move() {
@@ -115,7 +123,6 @@ function move() {
     }
     con.style.top = top + 'px';
     over();
-    console.log(con.childNodes.length);
     //debugger;
     if (top == 0) {
         createRow();
@@ -125,8 +132,8 @@ function move() {
 }
 
 function over() {
-    //黑块触底
     var row = $('con').childNodes;
+    //黑块触底
     if ((row[row.length - 1].pass_black !== 1) && (row.length == 5)) {
         fail();
     }
@@ -140,11 +147,13 @@ function over() {
 
 function fail() {
     clearInterval(clock);
+    var scorenum = $('score').innerHTML;
     alert('最终成绩： ' + scorenum);
     var con = $('con');
     con.style.top = '-408px';
     flag = false;
-    highscore();
+    highscore(scorenum);
     speed = 6;
     con.innerHTML = '';
+    $('score').innerHTML = 0;
 }
