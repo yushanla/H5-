@@ -3,10 +3,10 @@ function $(ele) {
     return document.getElementById(ele);
 }
 
-flag = false;
-speed = 6;
-scorenum = 0;
-highscorenum = 0;
+var clock = null;
+var flag = false;
+var speed = 6;
+var scorenum = 0;
 
 //
 function start() {
@@ -21,7 +21,6 @@ function init() {
     for (var i = 0; i < 4; i++) {
         createRow();
     }
-
     $('main').onclick = function(ev) {
         ev = ev || event;
         jduge(ev);
@@ -32,9 +31,16 @@ function init() {
 
 //创建行
 function createRow() {
-    for (var i = 0; i < 4; i++) {
-        var row = createDiv('row');
-        row.appendChild(createCell());
+    var con = $('con');
+    var row = createDiv('row');
+    var cell = createCell();
+    for (var j = 0; j < 4; j++) {
+        row.appendChild(cell[j]);
+    }
+    if (con.firstChild == null) {
+        con.appendChild(row); //init()
+    } else {
+        con.insertBefore(row, con.firstChild); //move()
     }
 }
 
@@ -45,28 +51,35 @@ function createCell() {
         arr[i] = createDiv('cell');
     }
     var balck = Math.floor(Math.random() * 4);
-    arr[balck].className = 'cell black';
+    arr[balck].setAttribute('class', 'cell black');
+    return arr;
 }
 
 //创建div
 function createDiv(attr) {
     var newDiv = document.createElement('div');
-    newDiv.className = attr;
+    newDiv.setAttribute('class', attr);
     return newDiv;
 }
 
 //删除行
 function delRow() {
     var con = $('con');
-    con.lastChild.remove();
+    //当行数=6时才删行
+    if (con.childNodes.length == 6) {
+        con.removeChild(con.lastChild);
+    }
+    //debugger;
 }
 //判断点击块颜色
 function jduge(ev) {
     //如果不是黑色，over()
-    if (ev.target.className.indexOf('balck') < 0 && ev.target.className.indexOf('cell') >= 0) {
+    if (ev.target.className.indexOf('black') == -1) {
         ev.target.parentNode.pass_white = 1;
         over();
-    } else {
+    }
+    if (ev.target.className.indexOf('black') !== -1) {
+        ev.target.className = 'cell';
         ev.target.parentNode.pass_black = 1;
         score();
     }
@@ -81,19 +94,32 @@ function score() {
 }
 //最高成绩记录
 function highscore() {
-
+    if (sessionStorage.high != undefined) {
+        if (sessionStorage.high > scorenum) {
+            sessionStorage.high = scorenum;
+        }
+    } else {
+        sessionStorage.high = 0;
+        sessionStorage.high = scorenum;
+    }
+    $('highscore').innerHTML = sessionStorage.high;
 }
 //移动
 function move() {
-    $('con').style.top = top + speed;
-    over();
-    if (top == 0) {
-        var row = createRow();
-        $('con').style.top = '-102px';
-        $('con').insertBefore(row, con.firtChild);
+    var con = $('con');
+    var top = parseInt(window.getComputedStyle(con, null)['top']);
+    if (top + speed > 0) {
+        top = 0;
+    } else {
+        top += speed;
     }
-    var len = $('con').childElementCount
-    if (len >= 6) {
+    con.style.top = top + 'px';
+    over();
+    console.log(con.childNodes.length);
+    //debugger;
+    if (top == 0) {
+        createRow();
+        con.style.top = '-102px';
         delRow();
     }
 }
@@ -101,11 +127,11 @@ function move() {
 function over() {
     //黑块触底
     var row = $('con').childNodes;
-    if (row[row.length - 1].pass_black == 1) {
+    if ((row[row.length - 1].pass_black !== 1) && (row.length == 5)) {
         fail();
     }
     //点击白块
-    for (var i = 0; i < row.length; i++) {
+    for (let i = 0; i < row.length; i++) {
         if (row[i].pass_white == 1) {
             fail();
         }
@@ -113,8 +139,12 @@ function over() {
 }
 
 function fail() {
-    alert('最终成绩： ' + score);
-    $('con').style.top = '-408px';
+    clearInterval(clock);
+    alert('最终成绩： ' + scorenum);
+    var con = $('con');
+    con.style.top = '-408px';
     flag = false;
-    highscore
+    highscore();
+    speed = 6;
+    con.innerHTML = '';
 }

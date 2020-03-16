@@ -21,6 +21,7 @@ table tr td {
     height: 408px;
     background: #eeecec;
     opacity: 0.6;
+    //overflow: hidden;
 }
 
 #con {
@@ -55,4 +56,5 @@ table tr td {
     margin: 20px auto;
     padding: 10px 80px 10px 65px;
     box-shadow: 3px 3px 2px #0bbb8f;
+    cursor: pointer;
 }
