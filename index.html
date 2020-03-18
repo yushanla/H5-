@@ -1,37 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>别踩白块</title>
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="./css/index.css">
 </head>
 
 <body>
-    <div id="title">
-        <div id="top">
-            <div id="score-1">
-                <h2>score</h2>
-                <h2 id="score">0</h2>
-            </div>
-            <div id="score-2">
-                <h2>Record</h2>
-                <h2 id="highscore">0</h2>
-            </div>
+    <div id="all">
+        <div id="num">
+            <table>
+                <tr>
+                    <td>Score</td>
+                    <td>High Score</td>
+                </tr>
+                <tr>
+                    <td id="score">0</td>
+                    <td id="highscore">0</td>
+                </tr>
+            </table>
         </div>
-
         <div id="main">
             <div id="con"></div>
         </div>
-        <div class="btn">
-            <button class="start" onclick="start()">
-                开始游戏吧
-            </button>
-        </div>
+        <div id="control" onclick="start()">GO!!!</div>
     </div>
-    <img id="img0" src="./img/win.jpg" width="450" alt="win">
+    <script src="./js/index.js"></script>
+    <img id="img0" src="./img/win.jpg" alt="win" width="450">
 </body>
-<script src="js/index.js"></script>
 
 </html>
