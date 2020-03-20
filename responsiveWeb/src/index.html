@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('button').click(function() {
+                $('div').animate({
+                    left: '250px',
+                    opacity: '0.5',
+                    height: '150px',
+                    width: '150px'
+                })
+            })
+        })
+    </script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <button>Start</button>
+    <div style="background:#98bf21;height:100px;width:100px;position:absolute;">
+    </div>
+</body>
+
+</html>
