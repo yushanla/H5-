@@ -1,0 +1,7 @@
+// 保存网站建设者 或者 其他有效信息
+// 展示开发团队的信息
+
+/* TEAM */
+DEVELOPER: yushan
+
+/* THANKS */

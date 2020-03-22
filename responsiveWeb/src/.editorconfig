@@ -1,0 +1,23 @@
+// 在不同的编辑器之间 维护统一的代码风格
+// 怎么格式化代码、怎么换行等
+// 大部分IDE都支持
+// editorconfig.org
+################################
+# editorconfig.org
+
+root = true # 最顶层的配置文件，不用再去找其他文件了
+
+[*]         # 下面的规则应用于所有文件 类似的有[*.js]
+charset = utf-8
+indent_size = 4     # 缩进的尺寸，4个空格
+# indent_size = tab #tab缩进
+# tab_width = xxx
+indent_style = space    #缩进样式--空格
+insert_final_newline = true #每个文件以空白行结尾
+trim_trailing_whitespace = true #去除换行行首的空白字符
+#fff
+#_ _ _ （会被删去）
+#ffff
+
+[*.md]
+trim_trailing_whitespace = false

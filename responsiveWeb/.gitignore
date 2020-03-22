@@ -1,1 +1,11 @@
+#MAC系统生成的垃圾文件
+*~
+.DS_Store
+#WebStorm的配置目录
+.idea
+#存放nodejs引用的模块目录
+mode_modules
+#工具自动化生成的版本发布目录
+dist
+#
 .history

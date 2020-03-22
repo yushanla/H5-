@@ -7,26 +7,22 @@
     <title>Document</title>
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
     <script>
-        $(document).ready(function() {
-            $('button').click(function() {
-                $('div').animate({
-                    left: '250px',
-                    opacity: '0.5',
-                    height: '150px',
-                    width: '150px'
-                })
-            })
-        })
     </script>
-    <style>
-
-    </style>
 </head>
 
-<body>
-    <button>Start</button>
-    <div style="background:#98bf21;height:100px;width:100px;position:absolute;">
-    </div>
+<body style="text-align: center;">
+    <p id="hint">Plz input your <strong>info</strong>:</p>
+    <input type="text" id="info">
+    <button id="btn">Submit</button>
+    <script>
+        $(document).ready(function() {
+            $('#btn').click(function() {
+                var a = $('<span></span>');
+                $('p').append(a);
+            });
+
+        });
+    </script>
 </body>
 
 </html>
