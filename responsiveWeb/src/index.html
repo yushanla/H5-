@@ -3,26 +3,76 @@
 
 <head>
     <meta charset="UTF-8">
+    <!-- 强制以最新的IE浏览器模式渲染页面 -->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
-    <script>
-    </script>
 </head>
 
-<body style="text-align: center;">
-    <p id="hint">Plz input your <strong>info</strong>:</p>
-    <input type="text" id="info">
-    <button id="btn">Submit</button>
-    <script>
-        $(document).ready(function() {
-            $('#btn').click(function() {
-                var a = $('<span></span>');
-                $('p').append(a);
-            });
-
-        });
-    </script>
+<body>
+    <!--[if lte ie8]>
+<p class="browserupgrade">请更新版本https://browsehappy.com/</p>
+    <![endif]-->
+    <!--页头-->
+    <header>
+        <!--
+            一般用class定义样式，id一般用于js快速的去呗和获取元素的class，
+            class一般用中横线分割，id一般用驼峰式命名法
+        -->
+        <!--导航-->
+        <nav class="top">
+            <span class="tel">理财热线： 400-888-8888</span>
+            <!--ul>li*5-->
+            <ul>
+                <!--多列选择 Alt+Shift+鼠标滑动-->
+                <li><a href="#">登录</a></li>
+                <li><a href="#">快速注册</a></li>
+                <li><a href="#">关于</a></li>
+                <li><a href="#">帮助</a></li>
+                <li><a href="#">APP下载</a></li>
+            </ul>
+        </nav>
+        <nav class="main">
+            <!--a.brand-->
+            <!--必不可少的图片最好使用<img>引用，而不是使用CSS中的背景图片，因为CSS可能会被禁用
+                而装饰用的图片可以使用CSS背景图片
+            -->
+            <a href="" class="brand"><img src="img/logo.png" alt="回到首页"></a>
+            <ul>
+                <li><a href="#">首页</a></li>
+                <li><a href="#">理财频道</a></li>
+                <li><a href="#">投资频道</a></li>
+                <li><a href="#">新手专区</a></li>
+                <li><a href="#">安全保障</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!--页内容-->
+    <div></div>
+    <!--帖子-->
+    <article></article>
+    <!--比article更广泛，适用于广告、文章-->
+    <section></section>
+    <!--页脚-->
+    <footer>
+        <!--ul>li*7>span-->
+        <!--证书无关紧要，可以只给一个class，供后来使用CSS背景图片-->
+        <ul>
+            <li><span class="icon icon-zfywxkz">支付业务许可证</span></li>
+            <li><span class="icon icon-">PCI认证</span></li>
+            <li><span class="icon icon-">Visa 验证</span></li>
+            <li><span class="icon icon-">VerSign加密服务</span></li>
+            <li><span class="icon icon-">网络工商</span></li>
+            <li><span class="icon icon-">电子商务协商认证诚信网</span></li>
+            <li><span class="icon icon-">北京工商</span></li>
+        </ul>
+    </footer>
+    <b></b>
+    <!--只是加粗-->
+    <em></em>
+    <!---重要的东西-->
+    <i></i>
+    <!--异于寻常的使用-->
 </body>
 
 </html>
