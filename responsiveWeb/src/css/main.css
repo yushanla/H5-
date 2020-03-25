@@ -1,0 +1,1026 @@
+/*****************
+* 页面样式
+******************/
+
+
+/* ===============
+   基本默认值（复写normalize.css）（浏览器重置）
+   =============== */
+
+html {
+    /*
+        长度单位
+        px  1px=1像素 控制更加精确 百分之百还原
+            以往对于设计高要完美还原，所以需要对像素的精确匹配
+            而现在大多是响应式设计，设计稿更像是一种示意，内容阅读的便利性更重要
+            相对单位更为突出 如 em rem
+        em  相对的长度单位 参考为 父元素的font-size，且具有继承的特点
+            一层层向上找，若连<html>都没有设置font-size，就采取默认em设置
+            1em = 16px
+            缺点：依赖于父元素的字体大小，容易混乱
+        rem 类似em，参考物为<html>，默认是 1rem = 16px
+            但并非所有浏览器都支持
+            em和rem更改<html>的font-size大小就可以改变整个页面的所有rem大小
+            更适合响应式发开
+            一般会设置html{ font-size:62.5% }，（10/16x100%），这样 1rem = 10px
+            方便从px到rem的转换
+    */
+    font-size: 62.5%;
+    /* 一般不会用纯黑色，减少对比度（不费眼）；页面雅致，最深也就#222 */
+    color: #222;
+}
+
+
+/* 匹配元素中被用户选中或处于高亮状态的部分
+ 选中文本的阴影效果 */
+
+::selection {
+    background-color: #b3d4fc;
+    text-shadow: none;
+}
+
+
+/* 列表效果 */
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+
+/* =================
+    工具样式
+   =================*/
+
+
+/* 居中显示 */
+
+.center-block {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.pull-right {
+    float: right !important;
+}
+
+.pull-left {
+    float: left !important;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.text-left {
+    text-align: left !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.hide {
+    display: none !important;
+}
+
+.show {
+    display: block !important;
+}
+
+
+/* 保留元素位置，只是看不见了 */
+
+.invisible {
+    visibility: hidden;
+}
+
+
+/* 隐藏文本 */
+
+.text-hide {
+    /*
+        font-family: a;
+        font-size: 0px;
+        line-height: 0;
+    */
+    font: 0/0 a;
+    color: transparent;
+    text-shadow: none;
+    background-color: transparent;
+    border: 0;
+}
+
+
+/* 清楚浮动
+    方法1. 容器末尾添加<div style="clear: both;"></div> 违背了结构和表现分离的原则
+    方法2. 在容器中添加属性 .container{ overflow: auto; }
+    方法3. 让容器也浮动起来 float:left; 影响这个页面的布局
+    方法4. 类似方法1. 但是符合结构表现分离的原则
+            .clearfix:after {
+                content: " ";
+                display: block;
+                height: 0;
+                visibility: hidden;
+                clear: both;
+            }
+
+            // 清除浮动 兼容IE6-7
+            .clearfix {
+                zoom: 1;
+            }
+    方法5. 如下
+    参考：CSS中的BFC
+*/
+
+
+/* 清除浮动 */
+
+
+/* clearfix::before 是为了防止顶部样式的崩溃
+    如：上一元素的margin-bottom和下一元素的margin-top叠加成一个 */
+
+.clearfix:after,
+.clearfix::before {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+
+/* =================
+    浏览器更新提示
+   =================*/
+
+.browserupgrade {
+    margin: 0;
+    padding: 1rem;
+    background: #ccc;
+}
+
+
+/* =================
+    浏览器更新提示
+   =================*/
+
+body {
+    font-size: 1.2rem;
+    /* 类似1.5倍行间距 一般为1.5 - 1.8 */
+    line-height: 1.5;
+    /* 浅灰色背景色 */
+    background-color: #f7f7f7;
+}
+
+a {
+    color: #666;
+    text-decoration: none;
+}
+
+a:hover,
+a:active {
+    color: #0ae;
+    text-decoration: underline;
+}
+
+
+/* 下面三个在屏幕宽度变化时，宽度都不变 */
+
+
+/* 网站头部 */
+
+header {
+    width: 100%;
+}
+
+header .top {
+    /* 在中文版Chrome中，字体最小为12px，
+        我们之前设置1rem=10px在这里就行不通了，中文版Chrome自动把1rem=12px
+        所以，最好在设置line-height时，直接把其设置为需要的像素值 */
+    line-height: 30px;
+    padding: 0 1.5rem;
+    color: #fff;
+    background-color: #555;
+    border-bottom: 1px #ecc000 solid;
+}
+
+header .top .tel {
+    float: left;
+}
+
+header .top ul {
+    text-align: right;
+}
+
+header .top ul li {
+    display: inline-block;
+}
+
+
+/* 链接之间添加间隔线，而第一个链接之前没有，最后一个后面没有 */
+
+header .top ul li+li {
+    border-left: 1px solid #999;
+    /* 页面上每个<li>元素之间会出现间隔，这是因为两个<li>之间存在换行符
+        归根揭底时字符问题，其大小受到了font-size的影响，导致出现间隔空间
+        解决方法：
+        ① 把<li>放到一行，即取消换行符
+        ② 把上一行的</li>和下一行的<li>放在一起，即</li><li>
+        ③ 不写</li>，即不闭合<li>元素，浏览器会自动闭合
+        ④ 设置负边距 margin-left:-3px
+            缺点：不是所有的浏览器的边距都是3px，存在兼容问题
+        ⑤ 格式化font-size为0，即<ul>的font-size:0;<li>的font-size:1.2rem;
+            缺点：出现边距问题
+        ⑥   后台渲染模板时去除这种间隔
+        ⑦   CSS4草案中有white-space-collasping可以解决*/
+    margin-left: -3px;
+}
+
+
+/* <a> 行内元素，否则在设置padding或者宽高时，没有作用 */
+
+header .top ul li a {
+    display: inline-block;
+    padding: 0 1.5rem;
+    color: #fff;
+}
+
+
+/* 媒体查询是按照1rem = 16px来计算的
+    800px = 50rem
+    480px = rem*/
+
+@media only screen and (max-width: 50em) {
+    header .top ul li a {
+        padding: 0 1rem;
+    }
+}
+
+@media only screen and (min-width:30.0625em) and (max-width:50em) {}
+
+@media only screen and (max-width:30em) {
+    header .top .tel,
+    /* 第三个/四个子元素
+        nth-child(even) nth-child(2n) 只选择偶数元素
+        nth-child(odd) nth-child(2n-1) 奇数个
+        另，p:nth-child(2) 意思是在当前元素的子元素中查到第2个子元素，若其为<p>元素，则产生效果
+        p:nth-of-type(2) 意思是在当前元素的子元素中查到所有<p>元素，再在其中找到第2个元素，再进行渲染
+        p:only-child 只有一个子元素才可
+        p:empty 子元素为空，即使空格也不行
+        */
+    header .top ul li:nth-child(3),
+    header .top ul li:nth-child(4) {
+        display: none;
+    }
+}
+
+
+/* 主导航样式 */
+
+header .main {
+    padding: 0;
+}
+
+header .main .brand {
+    float: left;
+    padding: 1rem 1.5rem;
+}
+
+header .main ul {
+    text-align: right;
+}
+
+header .main ul li {
+    display: inline-block;
+    border-left: 1px solid #f0ede9;
+}
+
+header .main ul li a {
+    display: inline-block;
+    padding: 0 2.5rem;
+    line-height: 5.5rem;
+    font-style: 1.6rem;
+    font-weight: bold;
+    color: #7c7a65;
+    text-decoration: none;
+}
+
+header .main ul li a:hover,
+header .main ul li a:active,
+header .main ul li a.active {
+    color: #ffb300;
+    background-color: #f8f6f1;
+}
+
+
+/* 320px可以作为最低宽度，如果宽度缩小到320px还没问题，这就可以了 */
+
+@media only screen and (max-width: 50em) {
+    header .main .brand {
+        float: none;
+        /* 不再浮动 */
+        display: block;
+        padding: 0;
+        margin: 1.5rem auto 0.5rem;
+        text-align: center;
+    }
+    header .main ul {
+        text-align: center;
+    }
+    header .main ul li {
+        border: none;
+    }
+    header .main ul li a {
+        padding: 0 1.5rem;
+    }
+}
+
+@media only screen and (min-width:30.0625em) and (max-width:50em) {
+    header .main ul li {
+        line-height: 3rem;
+    }
+    header .main ul li:first-child {
+        display: none;
+    }
+    header .main ul li a {
+        font-weight: normal;
+        padding: 0 0.5rem;
+    }
+}
+
+@media only screen and (max-width:30em) {
+    header .main ul li {
+        line-height: 3rem;
+    }
+    header .main ul li:first-child {
+        display: none;
+    }
+    header .main ul li a {
+        font-weight: normal;
+        padding: 0 0.5rem;
+    }
+}
+
+
+/* 网站主要内容 */
+
+.contanier {
+    width: 100%;
+}
+
+
+/* 交易信息 */
+
+.transaction {
+    width: 100%;
+    background-color: #7c7365;
+}
+
+.trans-content {
+    max-width: 90%;
+    margin: 0 auto;
+    font-size: 1.5rem;
+}
+
+.trans-data {
+    float: left;
+    padding: 1rem;
+    text-align: left;
+}
+
+.trans-data span {
+    display: inline-block;
+    line-height: 3rem;
+    color: #fff;
+}
+
+.trans-data span.trans-money {
+    font-size: 2.2rem;
+    color: #ff9900;
+    letter-spacing: 3px;
+    margin: 0 1rem;
+    padding: 0 1rem;
+    border-radius: 3px;
+    /* 背景颜色透明 但是 内容不透明 而 opacity 会使文字也透明 */
+    background-color: rgba(256, 255, 255, 0.9);
+    /* 内嵌效果 */
+    box-shadow: 1px 2px 1px #333 inset;
+}
+
+.trans-report {
+    text-align: right;
+}
+
+.trans-report a {
+    display: inline-block;
+    padding: 1rem;
+    line-height: 3rem;
+    color: #fff;
+}
+
+@media only screen and (max-width:50em) {
+    .trans-data {
+        padding: 1rem 0.5rem;
+    }
+    .trans-data span {
+        font-size: 1.2rem;
+    }
+    .trans-data span.trans-money {
+        font-size: 1.6rem;
+        margin: 0;
+        padding: 0;
+        letter-spacing: inherit;
+        box-shadow: none;
+        background: transparent;
+    }
+    .trans-report a {
+        font-size: 1.2rem;
+    }
+}
+
+@media only screen and (min-width:30.0625em) and (max-width:50em) {}
+
+@media only screen and (max-width:30em) {
+    .transaction {
+        padding: 0.5rem 0;
+    }
+    .trans-data .trans-report {
+        float: none;
+        text-align: center;
+    }
+    .trans-data .trans-report a {
+        padding: 0;
+    }
+}
+
+
+/* 滚动广告 */
+
+.ad {
+    display: none;
+}
+
+
+/* 平台特点 */
+
+.feature {
+    width: 90%;
+    margin: 2rem auto;
+    /* 由于计算的存在，不允许有一点的偏差，需要把间隔设置为 0 */
+    font-size: 0;
+}
+
+.feature .item {
+    display: inline-block;
+    /* CSS3的计算方法
+        小数是为了减少不同浏览器之间的差异
+        另,box-sizing是默认值，宽度应该减去每个item中的左右padding值（1+1）和
+        三个item之间的两个间隔间距（1.5x2=3rem），也就是下面.itme + .item中margin-left值（1.5），
+        3rem分散到三个item中后，也就只有1rem了
+        当然了，可以直接设置box-sizing:border-box;同时width: calc(33.333333333333% - 1rem);即可*/
+    width: calc(33.333333333333% - 3rem);
+    padding: 1rem;
+    font-size: 1.4rem;
+    background-color: #fff;
+    box-shadow: 0 0 4px #ccc;
+}
+
+
+/* 后面两个item设置左边距 */
+
+.feature .item+.item {
+    margin-left: 1.5rem;
+}
+
+.feature .item h3 {
+    display: inline-block;
+    width: 40%;
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+    font-size: 3.3rem;
+    text-align: center;
+    color: #ff9900;
+}
+
+.feature .item p {
+    display: inline-block;
+    width: 55%;
+    margin: 0;
+    padding: 0;
+    color: #999;
+}
+
+@media only screen and (min-width:30.0625) and (max-width:50rem) {
+    .feature .item h3,
+    .feature .item p {
+        display: block;
+        width: 100%;
+        font-size: 2.6rem;
+        text-align: center;
+    }
+    .feature .item p {
+        font-size: 1.2rem;
+    }
+}
+
+@media only screen and (max-width:30rem) {
+    .feature {
+        width: 96%;
+        margin: 1rem auto;
+    }
+    .feature .item {
+        display: block;
+        width: auto;
+    }
+    .feature .item+.item {
+        margin: 1rem 0 0;
+    }
+}
+
+
+/* 最新公告 */
+
+.notice {
+    width: 90%;
+    margin: 2rem auto;
+    font-size: 1.4rem;
+    line-height: 3rem;
+    background-color: #fff;
+    box-shadow: 0 0 4px #ccc;
+}
+
+.notice a {
+    float: left;
+    display: inline-block;
+    width: 70%;
+    margin-left: 2rem;
+    text-decoration: none;
+}
+
+.notice a:first-child {
+    /* 三个属性是为了是文本不换行 */
+    /* 超出使用省略号 */
+    text-overflow: ellipsis;
+    /* 隐藏滚动条 */
+    overflow: hidden;
+    /* 文字不换行 */
+    white-space: nowrap;
+}
+
+.notice a:first-child::before {
+    /* \00a0不换行的空格字符
+        content中增加空格无法使用&nbsp;所以使用\00a0 */
+    content: "最新公告： \00a0\00a0";
+    color: #aaa;
+}
+
+.notice a span {
+    color: #999;
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
+
+.notice a.more {
+    float: right;
+    width: auto;
+    margin-right: 2rem;
+    color: #ff9900;
+}
+
+@media only screen and (max-width:30em) {
+    .notice {
+        width: 96%;
+        margin: 1rem auto;
+        font-size: 1.2rem;
+    }
+    .notice a {
+        margin-left: 1rem;
+    }
+    .notice a span {
+        display: none;
+    }
+}
+
+
+/* 产品列表 */
+
+.product {
+    width: 90%;
+    margin: 2rem auto;
+    font-size: 1.4rem;
+    background-color: 1.4rem;
+    border-top: 2px solid #ff9900;
+    box-shadow: 0 0 4px #ccc;
+}
+
+.product h2 {
+    float: left;
+    width: 20%;
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: normal;
+    color: #635c51;
+}
+
+.product h2 em {
+    display: block;
+    margin-top: 1rem;
+    font-size: 1.6rem;
+}
+
+.product h2 em:first-child {
+    margin-top: 4rem;
+}
+
+.product .product-content {
+    float: right;
+    width: 79.5%;
+    border-left: 1px solid #eee;
+    background-color: #fff;
+}
+
+.product .product-content .item {
+    width: 100%;
+}
+
+.product .product-content .item+.item {
+    border-top: 1px solid #eee;
+}
+
+.product .product-content .item h3 {
+    float: left;
+    width: 30%;
+    margin: 1.5rem 0;
+    font-size: 1.4rem;
+    font-weight: normal;
+    text-align: center;
+}
+
+.product .product-content .item h3 em {
+    margin-right: 0.5rem;
+    font-size: 3.6rem;
+    font-style: normal;
+    color: #8b999d;
+}
+
+.product .product-content .item h3 i {
+    display: block;
+    font-size: 1.2rem;
+    font-style: normal;
+    color: #999;
+}
+
+.product .product-content .item .info {
+    float: left;
+    width: 48%;
+    padding: 1rem;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+    font-size: 14px;
+}
+
+.product .product-content .item .info p {
+    float: left;
+    display: inline-block;
+    text-align: center;
+    width: 56%;
+}
+
+.product .product-content .item .info p:last-child {
+    width: 40%;
+}
+
+.product .product-content .item .info p span {
+    display: block;
+    font-size: 2.4rem;
+    color: #ff9900;
+}
+
+.product .product-content .item .info p span i {
+    font-size: 1.2rem;
+    font-style: normal;
+    color: #999;
+}
+
+.product .product-content .item .buy {
+    float: left;
+    width: calc(22% - 4.4rem);
+    padding: 1rem;
+}
+
+.product .product-content .item .buy a {
+    display: block;
+    width: 90%;
+    margin: 1.5rem auto;
+    max-width: 12rem;
+    line-height: 4rem;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #ff9900;
+    border-radius: 5px;
+}
+
+.product .product-content .item .buy a:hover,
+.product .product-content .item .buy a:active {
+    background-color: #ff9900;
+}
+
+.product .product-content .item .buy a.disabled {
+    background-color: #ccc !important;
+    cursor: not-allowed;
+}
+
+@media only screen and (max-width:50rem) {
+    .product-content h2 {
+        float: none;
+        width: 100%;
+        margin-top: 2rem;
+        font-size: 2.2rem;
+    }
+    .product h2 em:first-child {
+        margin-top: 0;
+    }
+    .product h2 em {
+        display: inline;
+        font-size: 1.2rem;
+    }
+    .product .product-content {
+        float: none;
+        width: 100%;
+    }
+    .product .product-content .item h3 {
+        margin-bottom: 0;
+    }
+    .product .product-content .item h3 em {
+        font-size: 2.4rem;
+    }
+    .product .product-content .item .info {
+        padding: 1rem 1rem 0;
+        font-size: 1.2rem;
+    }
+    .product .product-content .item .info p span {
+        font-size: 2rem;
+    }
+    .product .product-content .item .buy a {
+        margin: 0.5rem auto;
+    }
+}
+
+@media only screen and (max-width:30em) {
+    .product h2 em:first-child::before {
+        content: " ";
+        display: table;
+    }
+    .product .product-content .item h3 em {
+        font-size: 2rem;
+        margin-right: 0;
+    }
+    .product .product-content .item .info {
+        float: right;
+        width: 70%;
+        padding: 1rem 0;
+        border: none;
+    }
+    .product .product-content .item .info p span {
+        font-size: 1.8rem;
+    }
+    .product .product-content .item .buy {
+        /* 清除浮动 独占一行 */
+        clear: both;
+        float: none;
+        /* 配合下面的max-width食用 */
+        width: 100%;
+        padding: 1rem 0 2rem;
+    }
+    .product .product-content .item .buy a {
+        margin-top: 0;
+        /* 购买按钮最大尺寸 */
+        max-width: 26rem;
+    }
+}
+
+
+/* 底部导航 */
+
+.footer {
+    padding: 3rem 0;
+    background-color: #fff;
+    border-top: 2px solid #eee;
+}
+
+.footer-content {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.footer-content .brand {
+    float: left;
+    display: block;
+    /* 灰色滤镜 */
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+    width: 20%;
+    height: 35px;
+    background: url(../img/logo@1x.png) no-repeat left;
+    background-size: 150px 35px;
+}
+
+.footer-content ul {
+    float: left;
+    width: 15%;
+}
+
+.footer-content ul li {
+    font-size: 1.4rem;
+    line-height: 2.4rem;
+}
+
+.footer-content ul li.title {
+    font-size: 1.6rem;
+    line-height: 3rem;
+}
+
+@media only screen and (max-width:50rem) {
+    /* logo 隐藏 */
+    .footer-content .brand {
+        display: none;
+    }
+    .footer-content ul {
+        width: 20%;
+    }
+    .footer-content ul li {
+        font-size: 1.2rem;
+        line-height: 2rem;
+    }
+    .footer-content ul li.title {
+        font-size: 1.4rem;
+        line-height: 2.5rem;
+    }
+}
+
+@media only screen and (max-width:30rem) {
+    .footer-content {
+        width: 98%;
+    }
+    .footer-content ul li.title {
+        font-size: 1.2rem;
+        line-height: 2rem;
+    }
+}
+
+
+/* 底部 */
+
+footer {
+    width: 100%;
+    padding: 3rem 0.5rem;
+    background-color: #ededed;
+}
+
+footer ul {
+    text-align: center;
+}
+
+footer ul li {
+    display: inline-block;
+}
+
+footer ul li .icon {
+    display: inline-block;
+    /* 缩进 ->隐藏掉文字 */
+    text-indent: -999rem;
+    margin-right: 1.5rem;
+    /* css sprits 静态图整合成一张大图片，然后再
+        通过background-position定位，设置宽高进行裁剪 */
+    background: url(http://i.alipayobjects.com/e/201307/jebmKcbrh.png) no-repeat;
+    overflow: hidden;
+}
+
+footer ul li .icon-zfywxkz {
+    width: 38px;
+    height: 33px;
+    background-position: -449px -410px;
+}
+
+footer ul li .icon-pcirk {
+    width: 38px;
+    height: 33px;
+    background-position: -519px -413px;
+}
+
+footer ul li .icon-visayz {
+    width: 38px;
+    height: 33px;
+    background-position: -592px -410px;
+}
+
+footer ul li .icon-vsjmfw {
+    width: 41px;
+    height: 33px;
+    background-position: -443px -369px;
+}
+
+footer ul li .icon-wlgs {
+    width: 38px;
+    height: 33px;
+    background-position: -520px -369px;
+}
+
+footer ul li .icon-rzcx {
+    width: 38px;
+    height: 33px;
+    background-position: -590px -369px;
+}
+
+footer ul li .icon-gs {
+    width: 30px;
+    height: 30px;
+    margin-right: 0;
+    background: url(https://os.alipayobjects.com/rmsportal/lybcjqloSPjMAFg.png) no-repeat;
+    background-size: 30px;
+}
+
+footer p {
+    text-align: center;
+    color: #999;
+}
+
+
+/* ==============
+    打印样式
+   ============== */
+
+@media print {
+    /* 清除背景 ， 颜色变为黑色，清除多余修饰 */
+    *,
+    *::before,
+    *::after {
+        background: transparent !important;
+        color: #000 !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+    /* 超链接都加上下划线  */
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+    /* 在链接后面添加链接信息 */
+    a[href]:after {
+        content: " (" attr(href) ") ";
+    }
+    abbr[title]:after {
+        content: " (" attr(title) ") ";
+    }
+    /*
+     * 使用 # 和 javascript 的超链接不打印 href
+     * 因为 这是用于调试的链接
+     */
+    a[href^="#"]:after,
+    a[href^="javascript"]:after {
+        content: "";
+    }
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        /* 避免在元素内部插入分页符
+            仅适用于Opera浏览器 */
+        page-break-inside: avoid;
+    }
+    thead {
+        display: table-header-group;
+    }
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+    img {
+        max-width: 100% !important;
+    }
+    p,
+    h2,
+    h3 {
+        /* 在元素内部发生分页时，必须在页面 底部 保留的最少行数 */
+        orphans: 3;
+        /* 在元素内部发生分页时，必须在页面 顶部 保留的最少行数 */
+        widows: 3;
+        /*
+         * 意思是 在内部出现分页时，保证标题和文字不会分离开
+         */
+    }
+    h2,
+    h3 {
+        /* 不在标题后面插入分页符，表面标题和内容分离 */
+        page-break-after: avoid;
+    }
+}
