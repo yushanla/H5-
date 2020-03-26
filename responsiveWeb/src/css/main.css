@@ -2,6 +2,10 @@
 * 页面样式
 ******************/
 
+* {
+    box-sizing: border-box;
+}
+
 
 /* ===============
    基本默认值（复写normalize.css）（浏览器重置）
@@ -425,7 +429,7 @@ header .main ul li a.active {
     color: #fff;
 }
 
-@media only screen and (max-width:50em) {
+@media only screen and (max-width: 50em) {
     .trans-data {
         padding: 1rem 0.5rem;
     }
@@ -445,13 +449,12 @@ header .main ul li a.active {
     }
 }
 
-@media only screen and (min-width:30.0625em) and (max-width:50em) {}
-
-@media only screen and (max-width:30em) {
+@media only screen and (min-width: 30.0625em) and (max-width: 50em) {
     .transaction {
         padding: 0.5rem 0;
     }
-    .trans-data .trans-report {
+    .trans-data,
+    .trans-report {
         float: none;
         text-align: center;
     }
@@ -460,12 +463,29 @@ header .main ul li a.active {
     }
 }
 
+@media only screen and (max-width:30em) {
+    .transaction {
+        padding: 0.5rem 0;
+    }
+    .trans-data,
+    .trans-report {
+        float: none;
+        text-align: center;
+    }
+    .trans-data,
+    .trans-report a {
+        padding: 0;
+    }
+}
+
 
 /* 滚动广告 */
 
-.ad {
-    display: none;
-}
+
+/* .ad {
+    display: block;
+    height: 200px;
+} */
 
 
 /* 平台特点 */
@@ -485,7 +505,7 @@ header .main ul li a.active {
         三个item之间的两个间隔间距（1.5x2=3rem），也就是下面.itme + .item中margin-left值（1.5），
         3rem分散到三个item中后，也就只有1rem了
         当然了，可以直接设置box-sizing:border-box;同时width: calc(33.333333333333% - 1rem);即可*/
-    width: calc(33.333333333333% - 3rem);
+    width: calc(33.333333333333% - 1rem);
     padding: 1rem;
     font-size: 1.4rem;
     background-color: #fff;
@@ -713,8 +733,8 @@ header .main ul li a.active {
 
 .product .product-content .item .buy {
     float: left;
-    width: calc(22% - 4.4rem);
-    padding: 1rem;
+    width: 22%;
+    padding: 1.7rem;
 }
 
 .product .product-content .item .buy a {
@@ -740,8 +760,8 @@ header .main ul li a.active {
     cursor: not-allowed;
 }
 
-@media only screen and (max-width:50rem) {
-    .product-content h2 {
+@media only screen and (max-width:50em) {
+    .product h2 {
         float: none;
         width: 100%;
         margin-top: 2rem;
@@ -850,7 +870,7 @@ header .main ul li a.active {
     line-height: 3rem;
 }
 
-@media only screen and (max-width:50rem) {
+@media only screen and (max-width:50em) {
     /* logo 隐藏 */
     .footer-content .brand {
         display: none;

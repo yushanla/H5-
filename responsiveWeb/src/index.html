@@ -6,6 +6,8 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./js/vendor/owl.carousel.2.1.0/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="./js/vendor/owl.carousel.2.1.0/assets/owl.theme.default.min.css">
     <link rel="stylesheet" href="./css/main.css">
     <title>理财宝 首页</title>
 </head>
@@ -42,7 +44,7 @@
     <!--页内容-->
     <div class="container">
         <!--交易信息-->
-        <div class="transaction">
+        <div class="transaction clearfix">
             <div class="trans-content">
                 <div class="trans-data">
                     <span>平台累计成交金额</span>
@@ -63,14 +65,28 @@
         </div>
         <!--广告-->
         <div class="ad">
-            <div class="item">
-                <img src="./img/ad001.png">
-            </div>
-            <div class="item">
-                <img src="./img/ad002.png">
-            </div>
-            <div class="item">
-                <img src="./img/ad003.png">
+            <div class="owl-carousel owl-theme">
+                <div class="item">
+                    <picture>
+                        <source srcset="./img/ad001-l.png" media="(min-width:50em)">
+                        <source srcset="./img/ad001-m.png" media="(min-width:30em)">
+                        <img src="./img/ad001.png" alt="报告">
+                    </picture>
+                </div>
+                <div class="item">
+                    <picture>
+                        <source srcset="./img/ad002-l.png" media="(min-width:50em)">
+                        <source srcset="./img/ad002-m.png" media="(min-width:30em)">
+                        <img src="./img/ad002.png" alt="红包">
+                    </picture>
+                </div>
+                <div class="item">
+                    <picture>
+                        <source srcset="./img/ad003-l.png" media="(min-width:50em)">
+                        <source srcset="./img/ad003-m.png" media="(min-width:30em)">
+                        <img src="./img/ad003.png" alt="秘籍">
+                    </picture>
+                </div>
             </div>
         </div>
         <!--功能-->
@@ -201,7 +217,7 @@
                         <p>总成交金额： <span class="money">48.800<i>万元</i> </span></p>
                     </div>
                     <div class="buy">
-                        <a href="#">购买</a>
+                        <a class="disabled" href="#">购买</a>
                     </div>
                 </div>
                 <div class="item clearfix">
@@ -211,7 +227,7 @@
                         <p>总成交金额： <span class="money">58.800<i>万元</i> </span></p>
                     </div>
                     <div class="buy">
-                        <a href="#">购买</a>
+                        <a class="disabled" href="#">购买</a>
                     </div>
                 </div>
             </div>
@@ -266,6 +282,10 @@
         </ul>
         <p>北京某互联网金融公司 版权所有 ® 2019-2020</p>
     </footer>
+    <script src="./js/vendor/jquery.min.js"></script>
+    <script src="./js/vendor/owl.carousel.2.1.0/owl.carousel.min.js"></script>
+    <script src="./js/vendor/picturefill.min.js"></script>
+    <script src="./js/main.js"></script>
 </body>
 
 </html>
