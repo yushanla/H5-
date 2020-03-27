@@ -50,6 +50,6 @@
 
 ![](https://github.com/yushanla/H5Exercise/blob/master/whiteVsBlack/img/Project-2-l.PNG?raw=true)
 
-### 游戏逻辑
+### 处理逻辑
 
 ![](https://github.com/yushanla/H5Exercise/blob/master/whiteVsBlack/logicDiagram.png?raw=true)
