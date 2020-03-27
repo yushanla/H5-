@@ -23,7 +23,7 @@
 
 ### 编程流程
 
-![](https://github.com/yushanla/H5Exercise/blob/master/responsiveWeb/src/img/flow.png?raw=true)
+![](https://github.com/yushanla/H5Exercise/blob/master/responsiveWeb/src/img/flow.PNG?raw=true)
 
 ### 项目快照
 
