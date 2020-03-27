@@ -89,14 +89,14 @@ function score() {
     scorenum += 1;
     $('score').innerHTML = scorenum;
     if (scorenum % 10 == 0) {
-        speed += 2;
+        //speed += 2;
         win();
     }
 }
 //奖励图像
 function win() {
     $('img0').style.opacity = 1;
-    setInterval("$('img0').style.opacity = 0", 2500);
+    //setInterval("$('img0').style.opacity = 0", 2500);
 }
 //最高成绩记录
 function highscore(scorenum) {

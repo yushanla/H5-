@@ -4,8 +4,9 @@
 #WebStorm的配置目录
 .idea
 #存放nodejs引用的模块目录
-mode_modules
+node_modules
 #工具自动化生成的版本发布目录
 dist
 #
 .history
+gulpfile.js
