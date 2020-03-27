@@ -2,8 +2,6 @@
 
 ## 网页游戏
 
----
-
 ​		以“别踩白块”为游戏原型
 
 ### 设计编程语言
@@ -15,7 +13,7 @@
 
 ### 项目快照
 
-![](https://github.com/yushanla/H5Exercise/blob/master/responsiveWeb/src/img/Project-2-l.png?raw=true)
+![](https://github.com/yushanla/H5Exercise/blob/master/whiteVsBlack/img/Project-2-l.PNG?raw=true)
 
 ### 游戏逻辑
 
