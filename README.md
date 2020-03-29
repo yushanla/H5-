@@ -29,11 +29,11 @@
 
 ### 编程流程
 
-![](https://github.com/yushanla/H5Exercise/blob/master/responsiveWeb/src/img/flow.PNG?raw=true)
+![](https://gitee.com/iyushan/H5Exercise/raw/master/responsiveWeb/img/flow.PNG)
 
 ### 项目快照
 
-![](https://github.com/yushanla/H5Exercise/blob/master/responsiveWeb/src/img/Project-1.png?raw=true)
+![](https://gitee.com/iyushan/H5Exercise/raw/master/responsiveWeb/img/Project-1.png?raw=true)
 
 ## Project-2 网页游戏
 
@@ -48,8 +48,8 @@
 
 ### 项目快照
 
-![](https://github.com/yushanla/H5Exercise/blob/master/whiteVsBlack/img/Project-2-l.PNG?raw=true)
+![](https://gitee.com/iyushan/H5Exercise/raw/master/whiteVsBlack/img/Project-2-l.PNG?raw=true)
 
 ### 处理逻辑
 
-![](https://github.com/yushanla/H5Exercise/blob/master/whiteVsBlack/logicDiagram.png?raw=true)
+![](https://gitee.com/iyushan/H5Exercise/raw/master/whiteVsBlack/logicDiagram.png?raw=true)
